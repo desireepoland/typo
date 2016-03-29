@@ -9,14 +9,14 @@ Feature: Manage Categories
 
   Scenario: Categories List
     Given I have categories named General, Food
-    When I go to the categories page
+    When I follow "Categories"
     Then I should see "General"
     And I should see "Food"
 
   Scenario: Successfully add categories
     Given I have no categories
-    When I go to the categories page
-    And I fill in "category_name" with "Foobar"
+    When I follow "Categories"
+    And I fill in "Name" with "Foobar"
     And I press "Save"
     Then I should see "Category was successfully saved"
     And I should see "Foobar"
