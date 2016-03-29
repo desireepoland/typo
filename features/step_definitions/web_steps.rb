@@ -65,6 +65,12 @@ Given /^I have no categories$/ do
   Category.delete_all
 end
 
+Given /^I have (\d+) category$/ do |amount|
+  amount.to_i.times do
+    Category.create(name:"Thing #{amount}")
+  end
+end
+
 Then /^I should have (\d+) category$/ do |num|
   Category.all.count == num.to_i
 end
