@@ -61,6 +61,18 @@ Given /^I have categories named (.+)$/ do |names|
   end
 end
 
+Given /^I have no categories$/ do
+  Category.delete_all
+end
+
+Then /^I should have (\d+) category$/ do |num|
+  Category.all.count == num.to_i
+end
+
+Then /^I should have ([0-9]+) categories?$/ do |count|
+  Category.count.should == count.to_i
+end
+
 # Single-line step scoper
 When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }

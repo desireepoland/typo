@@ -12,3 +12,12 @@ Feature: Manage Categories
     When I go to the categories page
     Then I should see "General"
     And I should see "Food"
+
+  Scenario: Successfully add categories
+    Given I have no categories
+    When I go to the categories page
+    And I fill in "category_name" with "Foobar"
+    And I press "Save"
+    Then I should see "Category was successfully saved"
+    And I should see "Foobar"
+    And I should have 1 category
