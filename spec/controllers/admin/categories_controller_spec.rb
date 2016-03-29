@@ -11,9 +11,11 @@ describe Admin::CategoriesController do
     request.session = { :user => henri.id }
   end
 
-  it "test_index" do
-    get :index
-    assert_response :redirect, :action => 'index'
+  describe "test_index" do
+    it "should redirect to new" do
+      get :index
+      assert_response :redirect, :action => 'new'
+    end
   end
 
   describe "test_edit" do
@@ -48,7 +50,7 @@ describe Admin::CategoriesController do
 
     it 'should render destroy template' do
       assert_response :success
-      assert_template 'destroy'      
+      assert_template 'destroy'
     end
   end
 
@@ -62,5 +64,5 @@ describe Admin::CategoriesController do
 
     assert_raise(ActiveRecord::RecordNotFound) { Category.find(test_id) }
   end
-  
+
 end
